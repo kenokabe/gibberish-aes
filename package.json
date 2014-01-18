@@ -1,29 +1,48 @@
 {
   "name": "Gibberish-AES",
   "version": "1.0.0",
-  "author": "Mark Percival <mark@mpercival.com>",
+  "author":
+  {
+    "name": "Mark Percival",
+    "email": "mark@mpercival.com"
+  },
   "description": "A lightweight Javascript Libray for OpenSSL compatible AES CBC encryption.",
   "contributors": [
-    {
-      "name": "Mark Percival",
-      "email": "mark@mpercival.com"
-    }
-  ],
-  "main": null,
-  "repository": {
+  {
+    "name": "Mark Percival",
+    "email": "mark@mpercival.com"
+  }],
+  "main": "./src/gibberish-aes.js",
+  "repository":
+  {
     "type": "git",
     "url": "git://github.com/mdp/gibberish-aes.git"
   },
   "keywords": [],
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies":
+  {},
+  "devDependencies":
+  {
     "grunt": "0.4.x",
     "grunt-contrib-uglify": "0.x.x",
     "grunt-contrib-clean": "0.x.x",
     "grunt-contrib-copy": "0.x.x",
     "grunt-contrib-jshint": "0.x.x"
   },
-  
-  "bundledDependencies": [],
-  "license": "MIT"
+  "license": "MIT",
+  "readme": "# Gibberish AES\n## A Javascript library for OpenSSL compatible AES encryption\n\n----\n\nCopyright: Mark Percival 2008 - <http://markpercival.us>  \nLicense: MIT\n\nThanks to :\n\n- Josh Davis - [http://www.josh-davis.org/ecmaScrypt](http://www.josh-davis.org/ecmaScrypt)\n- Alex Boussinet [alex.boussinet@gmail.com](mailto:alex.boussinet@gmail.com)\n- Chris Veness - [http://www.movable-type.co.uk/scripts/aes.html](http://www.movable-type.co.uk/scripts/aes.html)\n- Michel I. Gallant - [http://www.jensign.com/](http://www.jensign.com/)\n- Kristof Neirynck - [http://github.com/Crydust](http://github.com/Crydust) Fixes for IE7, YUI compression, JSLINT errors\n\n\n### Usage\n        // GibberishAES.enc(string, password)\n        // Defaults to 256 bit encryption\n        enc = GibberishAES.enc(\"This sentence is super secret\", \"ultra-strong-password\");\n        alert(enc);\n        GibberishAES.dec(enc, \"ultra-strong-password\");\n\n        // Now change size to 128 bits\n        GibberishAES.size(128);\n        enc = GibberishAES.enc(\"This sentence is not so secret\", \"1234\");\n        GibberishAES.dec(enc, \"1234\");\n\n        // And finally 192 bits\n        GibberishAES.size(192);\n        enc = GibberishAES.enc(\"I can't decide!!!\", \"whatever\");\n        GibberishAES.dec(enc, \"whatever\");\n\n#### OpenSSL Interop\n\n  In Jascascript\n  \n        GibberishAES.enc(\"Made with Gibberish\\n\", \"password\");\n        // Outputs: \"U2FsdGVkX1+21O5RB08bavFTq7Yq/gChmXrO3f00tvJaT55A5pPvqw0zFVnHSW1o\"\n        \n  On the command line\n  \n        echo \"U2FsdGVkX1+21O5RB08bavFTq7Yq/gChmXrO3f00tvJaT55A5pPvqw0zFVnHSW1o\" | openssl enc -d -aes-256-cbc -a -k password\n\n\n### Requirements\n\nNone.\n\nThe library is fully encapsulated, you should be able to drop it into nearly any website.\nThe downside to this is that it grew with the addition of its\nown Base64 library and MD5 hashing algorithm.\n\n### Tests\n\n[Click here][2] to run the test package in your browser.\n\nThe test script does require JQuery(included), but the\nbasic GibberishAES does not.\n\n### Design Factors\n\nIt only supports CBC AES encryption mode, and it's built to be compatible with one\nof the most popular AES libraries available, OpenSSL. It also passed the [FIPS certification][1]\nfrom NIST.\n\nOne of my primary issues with other AES libraries is the lack of support for OpenSSL.\nOne can't expect users to trust a library that's not compatible with a standard\nlike OpenSSL. It's outside the range of many users to audit encryption code, and while\ncompatibility doesn't ensure 100% compliance(especially with asymmetric encryption), one \ncan come pretty close with a symmetric algorithm like AES where the only difference is \nhow OpenSSL picks its random 8 byte salt.\n\nThe size of this library is under 25k when it's compressed and I feel that's adequate for\nmost uses. Although I used lookup tables for Galois fields, the cost of the size\nincrease was well offset by the more than 10 fold increase in speed.\n\n\n[1]: http://en.wikipedia.org/wiki/OpenSSL#FIPS_140-2_compliance \"FIPS Compliance\"\n[2]: http://mdp.github.com/gibberish-aes/gibberish-aes-test.html \"Gibberish Tests\"\n",
+  "readmeFilename": "README.markdown",
+  "bugs":
+  {
+    "url": "https://github.com/mdp/gibberish-aes/issues"
+  },
+  "homepage": "https://github.com/mdp/gibberish-aes",
+  "bundleDependencies": [],
+  "_id": "Gibberish-AES@1.0.0",
+  "dist":
+  {
+    "shasum": "379740fad5e37238ffdf9a30cb9ef4607fb094cd"
+  },
+  "_resolved": "git://github.com/mdp/gibberish-aes.git#e386ff99d9c221cf215a63248b503aa79efd3390",
+  "_from": "git://github.com/mdp/gibberish-aes.git"
 }
